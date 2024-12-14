@@ -9,7 +9,7 @@ from django.db import models
 
 
 class Classe(models.Model):
-    id = models.IntegerField(primary_key=True)  # This field type is a guess.
+    id = models.CharField(max_length=20,primary_key=True)  # This field type is a guess.
     nom_classe = models.CharField(unique=True, max_length=20)
     nombre_heure_semaine = models.IntegerField()
     description = models.TextField(null=True)
@@ -18,20 +18,36 @@ class Classe(models.Model):
     class Meta:
         managed = True
         db_table = 'classe'
-
+        verbose_name='classe'
+    def __str__(self):
+        return f'classe de {self.nom_classe} numero {self.id}'
 
 class ClassePeriodeCours(models.Model):
-    id_classe = models.OneToOneField(Classe, models.DO_NOTHING, db_column='id_Classe', primary_key=True)  # Field name made lowercase. The composite primary key (id_Classe, id_Periode, id_Cours) found, that is not supported. The first column is selected.
-    id_periode = models.ForeignKey('Periode', models.DO_NOTHING, db_column='id_Periode', blank=True)  # Field name made lowercase.
-    id_cours = models.ForeignKey('Cours', models.DO_NOTHING, db_column='id_Cours', blank=True, null=True)  # Field name made lowercase.
+    id_classe = models.ForeignKey("Classe", models.CASCADE, db_column='id_Classe',null=True)  # Field name made lowercase. The composite primary key (id_Classe, id_Periode, id_Cours) found, that is not supported. The first column is selected.
+    id_periode = models.ForeignKey('Periode', models.CASCADE, db_column='id_Periode',null=True)  # Field name made lowercase.
+    id_cours = models.ForeignKey('Cours', models.CASCADE, db_column='id_Cours', null=True)  # Field name made lowercase.
 
     class Meta:
         managed = True
         db_table = 'classe_periode_cours'
+        verbose_name='classe_periode_cours'
+        unique_together=("id_classe","id_periode","id_cours")
+        
+    def __str__(self):
+        return f' {self.id_classe} {self.id_cours}  {self.id_periode}'
 
-
+class ClasseEnseignantCours(models.Model):
+    id_classe=models.ForeignKey("Classe",models.CASCADE,db_column="id_classe",null=True)
+    id_enseignant=models.ForeignKey("Enseignant",models.CASCADE,db_column="id_eseignant",null=True)
+    id_cours=models.ForeignKey("Cours",models.CASCADE,db_column="id_cours",null=True)
+    class Meta:
+        managed=True
+        db_table="classe_enseignant_cours"
+        unique_together=('id_enseignant','id_classe')
+        unique_together=('id_cours','id_classe')
+        
 class Cours(models.Model):
-    id = models.IntegerField(primary_key=True)  # This field type is a guess
+    id = models.CharField(max_length=30,primary_key=True)  # This field type is a guess
     intitule = models.CharField(max_length=30, blank=True, null=True)
     heure_cours_semaine = models.IntegerField(blank=True, null=True)
     id_typecours = models.ForeignKey('Typecours', models.DO_NOTHING, db_column='id_typeCours', blank=True, null=True)  # Field name made lowercase.
@@ -39,18 +55,26 @@ class Cours(models.Model):
     class Meta:
         managed = True
         db_table = 'cours'
+        verbose_name='cours'
+    def __str__(self):
+        return f'cours de {self.intitule} numero {self.id}'
 class ClasseCours(models.Model):
     id_classe=models.ForeignKey('Classe',models.DO_NOTHING,db_column="id_classe")
     id_cours=models.ForeignKey('Cours',models.DO_NOTHING,db_column='id_cours')
     class Meta:
         managed=True
         db_table='classe_cours'
+        verbose_name='classe_cours'
+    def __str__(self):
+        return f'la classe {self.id_classe} fera le cours {self.id_cours}'
 class SallePeriode(models.Model):
     id_periode=models.ForeignKey('Periode',models.DO_NOTHING,db_column='id_periode')
     id_salle=models.ForeignKey("Salle",models.DO_NOTHING,db_column="id_salle")
-    
+    class Meta:
+        unique_together=('id_periode','id_salle')
+        
 class Directeur(models.Model):
-    id = models.IntegerField(primary_key=True)  # This field type is a guess.
+    id = models.CharField(max_length=20,primary_key=True)  # This field type is a guess.
     nom = models.CharField(max_length=20, blank=True, null=True)
     prenom = models.CharField(max_length=20, blank=True, null=True)
     login = models.CharField(unique=True, max_length=20, blank=True, null=True)
@@ -60,10 +84,11 @@ class Directeur(models.Model):
     class Meta:
         managed = True
         db_table = 'Directeur'
+        verbose_name='Directeur'
 
 
 class Enseignant(models.Model):
-    id = models.IntegerField(primary_key=True)  # This field type is a guess.
+    id = models.CharField(max_length=30,primary_key=True)  # This field type is a guess.
     nom = models.CharField(max_length=30, blank=True, null=True)
     prenom = models.CharField(max_length=25, blank=True, null=True)
     heure_cours_semaine = models.IntegerField(blank=True, null=True)
@@ -74,6 +99,7 @@ class Enseignant(models.Model):
     class Meta:
         managed = True
         db_table = 'enseignant'
+        verbose_name='enseignant'
 
 
 class EnseignantMatiere(models.Model):
@@ -83,16 +109,17 @@ class EnseignantMatiere(models.Model):
     class Meta:
         managed = True
         db_table = 'enseignant_matiere'
+        verbose_name="enseignant_matiere"
 
 
 class Etablissement(models.Model):
-    id = models.IntegerField(primary_key=True)  # This field type is a guess.
-    nom = models.IntegerField(unique=True, blank=True, null=True)
+    id = models.CharField(max_length=20,primary_key=True)  # This field type is a guess.
+    nom = models.CharField(max_length=20,unique=True, blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'etablissement'
-
+        verbose_name="etablissement"
 
 class Grade(models.Model):
     id = models.IntegerField(primary_key=True)  # This field type is a guess.
@@ -101,24 +128,27 @@ class Grade(models.Model):
     class Meta:
         managed = True
         db_table = 'grade'
+        verbose_name='grade'
 
 
 class Jour(models.Model):
-    id = models.IntegerField(primary_key=True)  # This field type is a guess.
+    id = models.CharField(max_length=20,primary_key=True)  # This field type is a guess.
     jour = models.CharField(max_length=20,unique=True)
 
     class Meta:
         managed = True
         db_table = 'jour'
+        verbose_name='jour'
 
 
 class Matiere(models.Model):
-    id = models.IntegerField(primary_key=True)  # This field type is a guess.
+    id = models.CharField(max_length=20,primary_key=True)  # This field type is a guess.
     matiere = models.CharField(unique=True, max_length=20, blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'matiere'
+        verbose_name='matiere'
 
 
 class Niveau(models.Model):
@@ -140,10 +170,11 @@ class Periode(models.Model):
     class Meta:
         managed = True
         db_table = 'periode'
+        verbose_name='periode'
 
 
 class Salle(models.Model):
-    id = models.IntegerField(primary_key=True)  # This field type is a guess.
+    id = models.CharField(max_length=20,primary_key=True)  # This field type is a guess.
     nom = models.CharField(unique=True, max_length=20, blank=True, null=True)
     id_ets=models.ForeignKey('Etablissement',models.DO_NOTHING,db_column="id_departement",default=0)
 
@@ -160,10 +191,11 @@ class SalleEnseignant(models.Model):
     class Meta:
         managed = True
         db_table = 'salle_enseignant'
+        verbose_name="salle_enseignant"
 
 
 class Senceur(models.Model):
-    id = models.IntegerField(primary_key=True)  # This field type is a guess.
+    id = models.CharField(max_length=20,primary_key=True)  # This field type is a guess.
     nom = models.CharField(max_length=20, blank=True, null=True)
     prenom = models.CharField(max_length=20, blank=True, null=True)
     login = models.CharField(unique=True, max_length=20, blank=True, null=True)
@@ -173,6 +205,7 @@ class Senceur(models.Model):
     class Meta:
         managed = True
         db_table = 'senceur'
+        verbose_name="senceur"
 
 
 class Typecours(models.Model):
@@ -182,3 +215,4 @@ class Typecours(models.Model):
     class Meta:
         managed = True
         db_table = 'typecours'
+        verbose_name="type_cours"

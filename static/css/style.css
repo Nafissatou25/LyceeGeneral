@@ -1,0 +1,91 @@
+#content {
+    background-image: url("../images/logo.jpg");
+    background-size: cover; /* Couvre tout le conteneur */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    height: 100vh;
+position: absolute;
+}
+/* Couche d'overlay avec opacité */
+.overlay {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(0, 0, 0, 0.7); /* Couleur noire avec 50% d'opacité */
+z-index: 0;
+}
+.foreground {
+position: relative; /* Nécessaire pour le contenu au-dessus */
+z-index: 1; /* Assure que le contenu est au-dessus du flou */
+display: flex; /* Utilise flexbox pour le centrage */
+flex-direction: column; /* Aligne les éléments en colonne */
+justify-content: center; /* Centre verticalement */
+align-items: center; /* Centre horizontalement */
+height: 100%; /* Prend toute la hauteur disponible */
+text-align: center; /* Centre le texte */
+}
+h1 {
+color: white; /* Couleur du texte */
+margin-top: 80px; /* Espacement au-dessus du titre */
+font-size: 3em; /* Taille du texte */
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour le texte */
+font-family: 'Cursive', sans-serif; /* Calligraphie (ajoutez une police personnalisée si nécessaire) */
+}
+/* Style pour la rangée des boutons */
+.button-row {
+display: flex; /* Utilise flexbox pour aligner les boutons */
+justify-content: center; /* Centre horizontalement les boutons */
+width: 100%; /* Prend toute la largeur disponible */
+}
+
+/* Style pour les boutons */
+.rectangle2 {
+
+margin: 20px; /* Espacement entre les boutons */
+padding: 30px; /* Espacement interne */
+border-radius: 15px; /* Coins arrondis */
+text-decoration: none; /* Supprime le soulignement */
+color: white; /* Couleur du texte */
+transition: transform 0.3s, opacity 0.3s; /* Animation de transition */
+width: 200px; /* Largeur fixe pour les boutons */
+height: 150px; /* Hauteur fixe pour les boutons */
+background-size: cover; /* Couvre tout le rectangle */
+background-position: center; /* Centre l'image */
+display: flex; /* Utilise flexbox pour centrer le texte */
+flex-direction: column; /* Aligne le texte en colonne */
+justify-content: flex-end; /* Aligne le texte en bas */
+align-items: center; /* Centre horizontalement le texte */
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombre portée pour un effet 3D */
+cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+}
+
+/* Image de fond pour les boutons */
+#emploi {
+background-image: url("../images/emploi de temps.jpg"); /* Image pour le bouton Emplois de Temps */
+}
+
+#admin {
+background-image: url("../images/administration.jpg"); /* Image pour le bouton Administration */
+}
+
+.rectangle2:hover {
+opacity: 0.9; /* Change l'opacité au survol */
+transform: scale(1.05); /* Agrandit légèrement le bouton au survol */
+}
+
+/* Style pour le texte des boutons */
+.bureau {
+font-size: 1.4em; /* Taille du texte */
+color: white;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Ombre pour le texte */
+margin: 10px 0; /* Espacement autour du texte */
+text-align: center; /* Centre le texte */
+text-decoration: none;
+}
+
+/* Supprime le soulignement des liens */
+a {
+text-decoration: none; /* Supprime le soulignement */
+}

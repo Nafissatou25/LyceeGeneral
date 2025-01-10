@@ -1,0 +1,72 @@
+{% load static %}  <!-- Ajoutez cette ligne en haut du fichier pour charger le tag static -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Accueil - Gestion des Emplois du Temps</title>
+    <!-- <link rel="icon" href="{% static 'favicon.ico' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="{% static 'css/header.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css"> -->
+    <!-- <script defer src="{% static 'welcome.js' %}"></script> -->
+    <!-- <script defer src="{% static 'js/bootstrap.js' %}"></script> -->
+</head>
+
+<header>
+<nav class="navbar navbar-dark bg-brown navbar-expand-sm" >
+  <div class="container-fluid" >
+    <a class="navbar-brand text-center pe-5 border-end border-grey border-2 text-decoration-none" style="background-color: rgb(255, 255, 255)" href="/">
+        <img src="{% static 'images/logo.jpg' %}" alt="Gestion des Emplois du Temps" style="height: 50px;"/>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <span class="navbar-brand text-center pe-5 text-decoration-none" style="color: rgb(64, 132, 151)" href="/" id="brand">LYCEE TECHNIQUE BILINGUE DE MAROUA</span>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+</header>
+
+<body>
+    <div class="container-fluid d-block m-0 p-0 h-100" id='content'>
+
+    <div class="overlay"></div> <!-- Couche d'overlay -->
+    <div class="foreground">
+        <h1>GESTION DES EMPLOIS DE TEMPS</h1>
+        <div class="button-row"> <!-- Conteneur pour centrer les boutons -->
+            <!-- Page des Emplois de Temps -->
+            <a  href="">
+                <div class=" rectangle2" id="emploi">
+                    
+                </div>
+                <p class="bureau">Emplois de Temps</p>
+            </a>
+
+            <!-- Page d'Administration -->
+            <a  href="{% url 'admin:index' %}">
+                <div class=" rectangle2" id="admin">
+                    
+                </div>
+                <p class="bureau">Administration</p>
+            </a>
+        </div>
+    
+                <div class="col-md"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from . import views
 from rest_framework import routers
 from EmploiDeTemps.urls import router as routeurEmplois
 router=routers.DefaultRouter()
@@ -30,6 +31,7 @@ router.registry.extend(routeurEmplois.registry)
 #from EmploiDeTemps.views import EnsView
 urlpatterns= [
     path('admin/',admin.site.urls),
-    path('', include(router.urls)),
+    #path('', include(router.urls)),
+    path('', views.home, name='home'),
     path('timeTable/<int:idClasse>/',include("EmploiDeTemps.urls"))
 ]

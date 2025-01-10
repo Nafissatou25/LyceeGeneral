@@ -1,0 +1,209 @@
+#content{
+  background-image: url("../img/back.png");
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    /* height: 500px; */
+    height: 100vh;
+    /* background: linear-gradient(#4bc5f6 29%, #077cab 100%); */
+ }
+
+ #contain{
+    padding-top: 30vh;
+    padding-bottom: 20vh;
+ }
+
+ body{
+    height: 100%;
+ }
+
+.banner{
+    height: 30vh;
+}
+
+.rectangle2 {
+    /* left: 0px; */
+    /* top: 0px; */
+    /* margin: auto; */
+    width: 200px !important;
+    height: 150px !important;
+    border-radius: 4px;
+    border: 2px solid #2590bb;
+    background: #ffffff;
+    text-decoration: none;
+    display: block;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+#chef{
+    border-color: #2590bb;
+}
+
+#chef:hover{
+    background: linear-gradient(135deg, #4bc5f6 29%, #077cab 100%);
+    border: #ffffff;
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(0) invert(1);
+    }
+}
+
+#bag {
+    border-color: #D92BC8;
+}
+
+#bag:hover{
+    background: #7F00FF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E100FF, #7F00FF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E100FF, #7F00FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: #ffffff;
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(0) invert(1);
+    }
+}
+
+#bmj{
+    border-color: #4DBF00;
+}
+
+#bmj:hover{
+    background: #02AAB0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #00CDAC, #02AAB0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: #ffffff;
+    
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(0) invert(1);
+    }
+}
+
+#bc {
+    border-color: #e43a15;
+}
+
+#bc:hover{
+    background: #e52d27;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #b31217, #e52d27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: #ffffff;
+
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(0) invert(1);
+    }
+}
+
+#geometre {
+    border-color: #F9D423;
+}
+
+#geometre:hover{
+    background: #e65c00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F9D423, #e65c00);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F9D423, #e65c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: #ffffff;
+
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(0) invert(1);
+    }
+}
+
+#archive {
+    border-color: black;
+
+    .icons8_off > img {
+        background: none;
+        filter: brightness(0.1);
+    }
+}
+
+#archive:hover{
+    background: #000428;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: #ffffff;
+
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(2000%);
+    }
+}
+
+.icons8_off {
+    width: 100px;
+    height: 100px;
+}
+
+.icons8_off > img{
+    width: 80%;
+}
+
+.bureau {
+    left: 32px;
+    top: 64px;
+    color: #000000;
+    font-family: "Times New Roman";
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+
+#first-row{
+    padding-top: 2rem;
+}

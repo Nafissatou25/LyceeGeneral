@@ -23,7 +23,7 @@ class Classe(models.Model):
         return f'classe de {self.nom_classe} numero {self.id}'
 
 class ClassePeriodeCours(models.Model):
-    id_salle = models.ForeignKey("Salle", models.CASCADE, db_column='id_Salle',null=True)  # Field name made lowercase. The composite primary key (id_Classe, id_Periode, id_Cours) found, that is not supported. The first column is selected.
+    id_classe= models.ForeignKey("Classe", models.CASCADE, db_column='id_Salle',null=True)  # Field name made lowercase. The composite primary key (id_Classe, id_Periode, id_Cours) found, that is not supported. The first column is selected.
     id_periode = models.ForeignKey('Periode', models.CASCADE, db_column='id_Periode',null=True)  # Field name made lowercase.
     id_cours = models.ForeignKey('Cours', models.CASCADE, db_column='id_Cours', null=True)  # Field name made lowercase.
 
@@ -31,9 +31,9 @@ class ClassePeriodeCours(models.Model):
         managed = True
         db_table = 'classe_periode_cours'
         verbose_name='classe_periode_cours'
-        #unique_together=("id_salle","id_periode","id_cours")
-        unique_together=("id_salle","id_cours")
-        unique_together=("id_salle","id_periode")
+        unique_together=("id_salle","id_periode","id_cours")
+        unique_together=("id_classe","id_cours")
+        unique_together=("id_classe","id_periode")
         
         
     def __str__(self):
